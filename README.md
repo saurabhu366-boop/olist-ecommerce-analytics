@@ -40,6 +40,25 @@ The objective is to build an analytical layer that helps stakeholders understand
 > **Metric note:** The repeat-customer rate is intentionally treated as **window-scoped**, not as a lifetime retention claim. The dataset covers a finite observation period, so customers with only one observed order may not have had sufficient time to repeat.
 
 ---
+## 📊 Dashboard Preview
+
+### 01 — Executive Overview
+![Executive Overview](Screenshots/01-executive-overview.png)
+
+### 02 — Sales Analysis
+![Sales Analysis](Screenshots/02-sales-analysis.png)
+
+### 03 — Customer & Retention Analysis
+![Customer & Retention Analysis](Screenshots/03-customer-retention.png)
+
+### 04 — Product & Category Analysis
+![Product & Category Analysis](Screenshots/04-product-category-analysis.png)
+
+### 05 — Seller Performance
+![Seller Performance](Screenshots/05-seller-performance.png)
+
+### 06 — Delivery & Review Analysis
+![Delivery & Review Analysis](Screenshots/06-delivery-review-analysis.png)
 
 ## Dashboard Pages
 
@@ -394,19 +413,5 @@ Olist-Ecommerce-Analytics/
 
 **Power BI · DAX · Power Query · MySQL · SQL · Data Modeling · Star Schema Design · Analytical SQL Views · KPI Development · RFM Segmentation · Cohort Analysis · Customer Lifecycle Analysis · Revenue Realization · Data Quality Auditing · Metric Validation · Data Lineage · Business-Rule Documentation · Business Intelligence · Data Visualization · Deneb / Vega-Lite**
 
----
 
-## Resume-Ready Project Description
 
-> **Olist E-Commerce Analytics — Power BI**  
-> Built a six-page business intelligence dashboard analyzing **R$13.22M in realized revenue across 96K delivered orders and 93K unique customers**, using MySQL analytical views, Power Query, DAX, RFM segmentation, cohort retention analysis, seller diagnostics, and fulfillment-aware delivery metrics. Implemented validation-first KPI definitions and a structured analytical layer to connect sales, customer lifecycle, product, seller, delivery, and review performance.
-
----
-
-## Project Focus
-
-This project demonstrates an end-to-end analytics workflow:
-
-**Raw Data → Validation → Business Rules → Analytical SQL → Data Model → Analysis → Dashboard → Business Interpretation**
-
-The emphasis is not only on making the numbers visible, but on making the **numbers defensible, traceable, and useful for business decisions**.
