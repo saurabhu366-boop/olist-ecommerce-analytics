@@ -1,49 +1,44 @@
 # Olist E-Commerce Analytics — Sales, Retention & Delivery Dashboard
 
-A six-page **Power BI business intelligence dashboard** analyzing e-commerce sales, customer lifecycle behavior, product and category performance, seller contribution, fulfillment reliability, and customer experience.
+A six-page **Power BI business intelligence project** analyzing e-commerce sales, customer lifecycle behavior, product and category performance, seller contribution, fulfillment reliability, geographic delivery risk, and customer experience.
 
-This project follows a **validation-first analytics workflow**: raw data is transformed into documented MySQL analytical views, business rules are validated, and the resulting analytical layer is consumed by Power BI for interactive reporting.
+The project follows a **validation-first analytics workflow**: raw data is profiled, business rules are applied through MySQL analytical views, KPI outputs are reconciled, and the validated analytical layer is consumed by Power BI.
 
 ---
 
 ## 📌 Project Overview
 
-Most e-commerce dashboards reduce performance to a single revenue number. This project deliberately separates **revenue realization, order activity, customer behavior, and fulfillment outcomes** so that operational performance is not hidden inside a blended KPI.
+Instead of treating revenue as a single headline metric, this project separates:
 
-The analysis connects:
-
-- Sales and realized revenue
-- Customer lifecycle and repeat purchasing
-- RFM-based customer segmentation
-- Cohort retention
-- Product and category performance
-- Seller-level performance diagnostics
+- Realized revenue
+- Order activity
+- Customer behavior
+- Product and category contribution
+- Seller performance
 - Delivery reliability
-- Geographic delivery risk
-- Customer reviews and experience
+- Customer experience
 
-The goal is not only to make metrics visible, but to make them **defensible, traceable, and useful for business decisions**.
+The objective is to create an analytical solution where metrics are **traceable, validated, and connected to business questions**.
 
 ---
 
 ## 🎯 Business Objectives
 
-The project is designed to answer:
+The analysis is designed to answer:
 
-- How is realized revenue performing over time?
-- Is revenue movement driven by order volume, order value, or both?
-- Which categories and products contribute most to realized revenue?
+- How is realized revenue changing over time?
+- Is revenue growth driven by order volume or order value?
+- Which categories and products contribute the most realized revenue?
 - Which sellers contribute the most commercial value?
-- What does customer lifecycle behavior look like within the observed window?
 - How strong is repeat purchasing?
-- Which customer segments represent higher value?
-- How does retention vary across cohorts?
+- Which customers represent higher value?
+- How does retention vary across acquisition cohorts?
 - Where are delivery delays concentrated?
-- How does operational reliability relate to customer reviews?
+- How does fulfillment performance relate to customer reviews?
 
 ---
 
-## 📊 Key KPIs
+# 📊 Key KPIs
 
 | KPI | Value |
 |---|---:|
@@ -56,243 +51,377 @@ The project is designed to answer:
 | **Late Delivery Rate** | **6.77%** |
 | **Average Review Score** | **4.09 / 5** |
 
-> **Metric definition note:** Repeat-customer analysis is treated as **window-scoped** because the dataset covers a finite historical observation period. A customer appearing once in the data is not necessarily a customer who would never repeat outside the observation window.
+> **Metric definition:** Repeat-customer analysis is window-scoped because the dataset represents a finite historical observation period. A customer appearing once in the dataset is not necessarily a customer who would never purchase again outside the observed period.
 
 ---
 
-## 📊 Dashboard Preview
+# 📊 Dashboard
 
-This project is structured across six analytical views, with each page focused on a distinct business question.
+The Power BI solution contains six analytical pages.
 
-### 01 — Executive Overview
-> **What is the overall health of the business?**
+## 01 — Executive Overview
+
+**Business question:**  
+> What is the overall health of the business?
+
+Provides a high-level view of realized revenue, delivered orders, AOV, category contribution, geography, customer behavior, delivery performance, and reviews.
 
 ![Executive Overview](Screenshots/01-executive-overview.png)
 
-### 02 — Sales Analysis
-> **How are revenue and order performance evolving over time?**
+---
+
+## 02 — Sales Analysis
+
+**Business question:**  
+> How are revenue and order performance evolving over time?
+
+Analyzes:
+
+- Revenue trends
+- Order volume
+- Average order value
+- Monthly performance
+- Revenue contribution
+- Volume versus value movement
 
 ![Sales Analysis](Screenshots/02-sales-analysis.png)
 
-### 03 — Customer & Retention Analysis
-> **Who are the customers, how valuable are they, and how well are they retained?**
+---
+
+## 03 — Customer & Retention Analysis
+
+**Business question:**  
+> Who are the customers, how valuable are they, and how well are they retained?
+
+Analyzes:
+
+- New versus repeat customers
+- Repeat purchase behavior
+- RFM segmentation
+- Customer value
+- Cohort retention
+- Customer lifecycle patterns
 
 ![Customer & Retention](Screenshots/03-customer-retention.png)
 
-### 04 — Product & Category Analysis
-> **Which categories and products drive realized business value?**
+---
+
+## 04 — Product & Category Analysis
+
+**Business question:**  
+> Which categories and products drive realized business value?
+
+Analyzes:
+
+- Category revenue
+- Product contribution
+- Delivered items
+- Average item price
+- Category-level performance
+- Product-level contribution
 
 ![Product & Category](Screenshots/04-product-category-analysis.png)
 
-### 05 — Seller Performance
-> **Which sellers contribute most to marketplace performance?**
+---
+
+## 05 — Seller Performance
+
+**Business question:**  
+> Which sellers contribute most to marketplace performance?
+
+Analyzes:
+
+- Seller revenue
+- Seller order volume
+- Delivered items
+- Revenue per order
+- Seller contribution
+- Commercial performance distribution
 
 ![Seller Performance](Screenshots/05-seller-performance.png)
 
-### 06 — Delivery & Review Analysis
-> **Where does fulfillment performance intersect with customer experience?**
+---
+
+## 06 — Delivery & Review Analysis
+
+**Business question:**  
+> Where does fulfillment performance intersect with customer experience?
+
+Analyzes:
+
+- Average delivery time
+- Late delivery rate
+- Delivery delays
+- Geographic delivery patterns
+- Review scores
+- Customer experience indicators
 
 ![Delivery & Review](Screenshots/06-delivery-review-analysis.png)
 
 ---
 
-## 💡 Key Business Insights
+# 💡 Key Business Insights
 
-The dashboard is designed to surface several important business patterns:
+The dashboard is designed to surface several business signals.
 
-- **Customer retention is a major growth opportunity:** the observed repeat-customer rate is **3.00%**, making second-purchase conversion an important area for customer-lifecycle strategy.
+### Customer retention is a growth opportunity
 
-- **Revenue performance requires fulfillment context:** realized revenue is evaluated separately from broader booked or unrealized commercial value, reducing the risk of presenting demand that did not become completed business as revenue.
+The observed repeat-customer rate is **3.00%**, highlighting second-purchase conversion as an important customer-lifecycle opportunity.
 
-- **Customer value is multidimensional:** RFM analysis combines recency, frequency, and monetary value instead of ranking customers using revenue alone.
+### Revenue should be evaluated with fulfillment context
 
-- **Seller performance is uneven:** seller-level revenue, order volume, and revenue-per-order measures provide separate views of commercial contribution rather than an arbitrary composite score.
+The project distinguishes **realized revenue** from broader booked or unrealized commercial value, reducing the risk of treating demand that did not become completed business as revenue.
 
-- **Delivery reliability can be diagnosed geographically:** the overall late-delivery rate is **6.77%**, while state-level analysis helps identify areas requiring deeper operational investigation.
+### Customer value is multidimensional
 
-- **Customer satisfaction provides an additional experience signal:** the overall review score is **4.09/5**, allowing delivery outcomes and customer feedback to be analyzed together.
+RFM segmentation evaluates customers using:
 
-> These observations are intentionally framed as analytical signals rather than unsupported causal claims.
+- Recency
+- Frequency
+- Monetary value
+
+This provides a more informative customer-value perspective than revenue alone.
+
+### Seller contribution is not one-dimensional
+
+Seller performance is evaluated using separate measures such as:
+
+- Realized revenue
+- Orders
+- Delivered items
+- Revenue per order
+
+This avoids creating an arbitrary composite seller score.
+
+### Delivery performance has geographic variation
+
+The overall late-delivery rate is **6.77%**. State-level analysis provides a way to identify areas that may require deeper operational investigation.
+
+### Customer experience provides an additional signal
+
+The overall review score is **4.09 / 5**, allowing customer feedback to be evaluated alongside fulfillment performance.
+
+> These observations are presented as analytical signals rather than unsupported causal claims.
 
 ---
 
-## 🔍 Analytical Framework
+# 🔍 Analytical Framework
 
-### Revenue Realization
+## Revenue Realization
 
 Revenue is treated as a **fulfillment-aware metric**.
 
-The project distinguishes realized revenue from broader item-level commercial values so that cancelled, unavailable, or otherwise unrealized demand is not accidentally presented as completed revenue.
-
-### Customer Lifecycle Segmentation
-
-RFM analysis is used to distinguish customer behavior and value through:
-
-- **Recency** — how recently a customer purchased
-- **Frequency** — how often a customer purchased
-- **Monetary value** — realized revenue generated by the customer
-
-The methodology is adapted to the actual purchase-frequency distribution rather than blindly applying a conventional segmentation template.
-
-### Repeat Purchase Analysis
-
-Repeat behavior is evaluated within the available observation window.
-
-This avoids interpreting a finite historical dataset as if it represented customers' complete lifetime purchasing history.
-
-### Cohort Retention
-
-Customers are grouped by first-purchase month and evaluated across subsequent months.
-
-Retention is normalized against the original cohort size so cohorts of different sizes can be compared more fairly.
-
-The analysis also accounts for **observation-window bias**: later cohorts have had less time to generate repeat purchases than earlier cohorts.
-
-### Delivery Reliability
-
-Delivery duration and estimated-versus-actual delivery dates are used to evaluate operational reliability.
-
-Geographic analysis helps surface **delivery-risk areas** that may require operational investigation.
-
-### Seller Performance Diagnostics
-
-Seller performance is evaluated using independent commercial measures such as realized revenue, order volume, items delivered, and revenue-per-order.
-
-This keeps commercial contribution separate from operational performance.
-
-### Customer Experience
-
-Review scores are analyzed alongside delivery performance to investigate whether operational outcomes are associated with differences in customer feedback.
+Realized revenue is separated from broader item-level commercial value so that cancelled, unavailable, or otherwise unrealized demand is not incorrectly presented as completed revenue.
 
 ---
 
-## 🧩 Data Pipeline
+## Customer Lifecycle Analysis
+
+Customer behavior is evaluated through:
+
+- First purchase
+- Repeat purchasing
+- Customer frequency
+- Customer monetary value
+- RFM segmentation
+- Cohort retention
+
+---
+
+## RFM Segmentation
+
+RFM analysis combines:
+
+**Recency**  
+How recently the customer purchased.
+
+**Frequency**  
+How often the customer purchased.
+
+**Monetary**  
+How much realized revenue the customer generated.
+
+The scoring approach is adapted to the observed purchase-frequency distribution rather than blindly applying a conventional segmentation template.
+
+Segments include:
+
+- Champions
+- Loyal Customers
+- New / Promising
+- At Risk
+- Cannot Lose Them
+- Other
+
+---
+
+## Cohort Retention
+
+Customers are grouped according to their first realized purchase month and evaluated across subsequent activity months.
+
+The analysis also considers **observation-window bias**: later cohorts have had less time to generate repeat purchases than earlier cohorts.
+
+---
+
+## Delivery Reliability
+
+Delivery performance is evaluated using:
+
+- Purchase timestamp
+- Delivery timestamp
+- Estimated delivery date
+- Actual delivery date
+- Delivery duration
+- Delivery delay
+
+Geographic analysis is used to identify potential delivery-risk areas.
+
+---
+
+## Seller Performance
+
+Seller performance is evaluated using independent commercial measures rather than a single composite score.
+
+This allows revenue contribution, order volume, and operational measures to be interpreted separately.
+
+---
+
+## Customer Experience
+
+Review scores are analyzed alongside delivery performance to investigate potential relationships between fulfillment outcomes and customer feedback.
+
+---
+
+# 🧩 Data Pipeline
 
 ```text
 Source CSVs
-    ↓
+     ↓
 Raw MySQL Layer
-    ↓
-Data-Quality Validation
-    ↓
+     ↓
+Data Quality Validation
+     ↓
 Cleaned / Staging Layer
-    ↓
+     ↓
 Analytical SQL Views
-    ↓
+     ↓
 RFM & Cohort Retention Layer
-    ↓
+     ↓
 Power BI Data Model
-    ↓
+     ↓
 Six-Page Dashboard
 ```
 
-The workflow follows a **validation-first analytics** approach:
+### Workflow
 
 1. Preserve raw source data.
-2. Validate data quality and business assumptions.
+2. Profile and validate the data.
 3. Apply documented business rules.
 4. Build reusable analytical SQL views.
-5. Reconcile KPI outputs.
-6. Load the analytical layer into Power BI.
-7. Build interactive reporting and diagnostic visuals.
+5. Validate and reconcile KPI outputs.
+6. Connect the analytical layer to Power BI.
+7. Build interactive dashboards.
+8. Translate analytical outputs into business insights.
 
 ---
 
-## 🗄️ Data Architecture & Analytical Layer
+# 🗄️ Analytical SQL Layer
 
-The project uses transactional, customer, product, seller, delivery, and review data.
+The project uses reusable MySQL views to create a structured analytical layer for Power BI.
 
-Important analytical views include:
+Key views include:
 
 ```text
 vw_sales_summary
 vw_order_summary
-vw_customer_repeat_purchase_summary
-vw_customer_rfm
-vw_customer_rfm_final
-vw_customer_rfm_segments
-vw_cohort_retention
+vw_monthly_sales_trend
 vw_category_performance
 vw_seller_performance
-vw_monthly_sales_trend
+vw_order_reviews_latest
+vw_dim_customer
+vw_customer_first_purchase
+vw_customer_repeat_purchase_summary
 vw_customer_geo_distribution
+vw_customer_rfm
+vw_customer_rfm_segments
+vw_cohort_retention
 ```
 
-This structure provides clearer **data lineage** between source tables, business rules, analytical metrics, and dashboard visuals.
+This creates clearer **data lineage** between source tables, business rules, metrics, and dashboard visuals.
 
 ---
 
-## 🧠 Notable Technical Decisions
+# 🧠 Technical Decisions
 
-### Metric Definition Discipline
+## Validation-First Analytics
 
-Revenue is explicitly defined around **realized business**, rather than using a generic revenue field without fulfillment context.
+Dashboard KPIs were validated through SQL before being used for reporting.
 
-### Validation-First Analytics
+The final baseline reconciliation confirmed:
 
-Analytical views and KPI outputs were validated before being used as the basis for dashboard reporting.
+| Metric | Expected | Actual |
+|---|---:|---:|
+| Realized Revenue | ₹13,221,498.11 | ₹13,221,498.11 |
+| Delivered Orders | 96,478 | 96,478 |
 
-### Data-Shape-Aware RFM
-
-Frequency scoring is adapted to the actual customer purchase-frequency distribution. A default quintile approach can create misleading distinctions when one-time customers dominate the dataset.
-
-### Observation-Window Awareness
-
-Repeat purchasing and cohort retention are interpreted within the historical observation window, reducing the risk of overstating retention performance.
-
-### Independent Seller Metrics
-
-Seller revenue, orders, and operational measures remain separate instead of being combined into an arbitrary performance score.
-
-### Readability Without Losing Traceability
-
-Long seller and product IDs are shortened in visual labels for readability while the underlying identifiers remain available for detailed inspection.
+This confirms that the core Power BI analytical layer reconciles with the validated SQL baseline.
 
 ---
 
-## 🧪 Data Quality & Validation
+## Data-Shape-Aware RFM
 
-The project includes explicit validation before dashboard reporting.
+The dataset contains a large proportion of customers with limited purchase frequency.
 
-Checks cover:
+Therefore, RFM scoring was designed with the actual customer purchase distribution in mind rather than assuming a perfectly balanced frequency distribution.
 
-- Duplicate and uniqueness checks
+---
+
+## Observation-Window Awareness
+
+Repeat purchase and retention metrics are interpreted within the available historical dataset.
+
+This prevents the analysis from treating the dataset as a complete lifetime history for every customer.
+
+---
+
+## Independent Seller Metrics
+
+Seller revenue, order volume, delivered items, and revenue-per-order metrics remain separate.
+
+This makes the dashboard more transparent than an arbitrary weighted seller score.
+
+---
+
+## Readability Without Losing Traceability
+
+Long seller and product identifiers are shortened where necessary for dashboard readability while preserving the underlying identifiers for detailed analysis.
+
+---
+
+# 🧪 Data Quality & Validation
+
+The SQL layer includes checks for:
+
+- Raw versus cleaned row counts
+- Null values
+- Order completeness
+- Order-item quality
+- Review-score validity
 - Customer coverage
-- RFM population coverage
-- Cohort month and offset validity
-- Revenue reconciliation
+- RFM population
+- Cohort validity
 - Delivery-date validity
+- Revenue reconciliation
+- Category reconciliation
+- Seller reconciliation
+- Geographic reconciliation
 - Review deduplication
-- Analytical-view row counts
-- KPI reconciliation between SQL and Power BI
+- KPI reconciliation
 
-The validation layer supports **KPI traceability** and reduces the risk of dashboard visuals hiding upstream data-quality issues.
-
----
-
-## 📑 Dashboard Pages
-
-### 1. Executive Overview
-High-level business snapshot covering realized revenue, delivered orders, AOV, time trends, category contribution, geography, delivery, and customer experience.
-
-### 2. Sales Analysis
-Examines revenue, order volume, AOV, and time-based performance to distinguish volume-driven and value-driven changes.
-
-### 3. Customer & Retention
-Combines repeat-purchase analysis, RFM segmentation, customer value, and cohort retention.
-
-### 4. Product & Category Analysis
-Evaluates category and product contribution through revenue, delivered items, and average item price.
-
-### 5. Seller Performance
-Provides seller-level revenue, order, item, and revenue-per-order diagnostics.
-
-### 6. Delivery & Review Analysis
-Combines delivery duration, late-delivery performance, geographic patterns, review scores, and customer-experience indicators.
+The validation layer helps maintain **metric consistency and KPI traceability** throughout the analytical workflow.
 
 ---
 
-## 🛠️ Tools & Technologies
+# 🛠️ Tools & Technologies
 
 | Area | Technology |
 |---|---|
@@ -301,15 +430,15 @@ Combines delivery duration, late-delivery performance, geographic patterns, revi
 | Data Transformation | **Power Query** |
 | Calculations | **DAX** |
 | Custom Visualization | **Deneb / Vega-Lite** |
-| Data Modeling | **Analytical views / dimensional modeling** |
-| Analysis | **RFM, cohort retention, KPI analysis** |
-| Quality | **SQL validation & reconciliation** |
+| Data Modeling | **Analytical SQL Views** |
+| Customer Analysis | **RFM & Cohort Retention** |
+| Data Quality | **SQL Validation & Reconciliation** |
 
 ---
 
-## 🎨 Dashboard Design
+# 🎨 Dashboard Design
 
-The dashboard uses a consistent business-oriented visual system:
+The dashboard uses a consistent business-oriented visual system.
 
 | Purpose | Colour |
 |---|---|
@@ -322,30 +451,19 @@ The dashboard uses a consistent business-oriented visual system:
 | Gridlines | `#E5E7EB` |
 | Background | `#F5F7FA` |
 
-The design uses semantic colors for operational states and maintains consistent typography, spacing, and KPI hierarchy across all six pages.
+The design maintains:
 
-Selected custom visuals use **Deneb / Vega-Lite** where standard Power BI visuals were not sufficient for the intended analytical presentation.
+- Consistent typography
+- Clear KPI hierarchy
+- Semantic colors
+- Consistent spacing
+- Business-focused visual hierarchy
 
----
-
-## 💼 Business Questions Supported
-
-- How is realized revenue changing over time?
-- What is driving changes in revenue?
-- Which categories and products generate the most realized value?
-- Which sellers contribute most to marketplace performance?
-- How many customers are repeat purchasers?
-- Which customers are more valuable based on RFM behavior?
-- How does retention differ by acquisition cohort?
-- Which geographic areas show greater delivery risk?
-- How long does fulfillment typically take?
-- How frequently are orders delivered late?
-- What is the overall customer review experience?
-- How can sales, customer, seller, and operational metrics be evaluated together?
+Selected visuals use **Deneb / Vega-Lite** where standard Power BI visuals were not sufficient for the intended analytical presentation.
 
 ---
 
-## 📁 Repository Structure
+# 📁 Repository Structure
 
 ```text
 olist-ecommerce-analytics/
@@ -361,11 +479,11 @@ olist-ecommerce-analytics/
 │   └── 06-delivery-review-analysis.png
 │
 ├── sql/
-│   ├── data_quality/
-│   ├── analytical_views/
-│   ├── customer_rfm/
-│   ├── cohort_retention/
-│   └── validation/
+│   ├── 01_data_quality.sql
+│   ├── 02_analytical_views.sql
+│   ├── 03_customer_rfm.sql
+│   ├── 04_cohort_retention.sql
+│   └── 05_validation.sql
 │
 ├── documentation/
 │   └── business_rules.md
@@ -376,23 +494,59 @@ olist-ecommerce-analytics/
 
 ---
 
-## 🎯 Project Outcome
+# 💼 Business Questions Supported
 
-The final solution demonstrates an end-to-end analytics workflow:
+The dashboard can be used to investigate:
 
-**Raw Data → Validation → Business Rules → Analytical SQL → Data Model → Analysis → Dashboard → Business Interpretation**
-
-The emphasis is on building a **traceable analytical product**, not simply a collection of charts.
+- How is realized revenue changing?
+- What is driving revenue movement?
+- Which categories generate the most realized value?
+- Which products contribute most to revenue?
+- Which sellers contribute most to marketplace performance?
+- How many customers are repeat purchasers?
+- Which customers have higher RFM value?
+- How does retention differ between cohorts?
+- Which geographic areas show delivery risk?
+- How long does fulfillment take?
+- How frequently are orders delivered late?
+- What is the customer review experience?
+- How can commercial and operational performance be evaluated together?
 
 ---
 
-## 👨‍💻 Skills Demonstrated
+# 🎯 Project Outcome
+
+This project demonstrates an end-to-end business intelligence workflow:
+
+```text
+Raw Data
+   ↓
+Data Validation
+   ↓
+Business Rules
+   ↓
+Analytical SQL
+   ↓
+KPI Reconciliation
+   ↓
+Power BI Data Model
+   ↓
+Interactive Dashboard
+   ↓
+Business Insights
+```
+
+The focus is on building a **traceable analytical product**, rather than simply creating a collection of charts.
+
+---
+
+# 👨‍💻 Skills Demonstrated
 
 **SQL · MySQL · Power BI · DAX · Power Query · Data Modeling · Analytical SQL Views · KPI Development · RFM Segmentation · Cohort Analysis · Customer Lifecycle Analysis · Revenue Realization · Fulfillment Analytics · Seller Performance Diagnostics · Data Quality Auditing · Metric Validation · Data Lineage · Business-Rule Documentation · Business Intelligence · Data Visualization · Deneb / Vega-Lite**
 
 ---
 
-## 📄 Resume-Ready Project Description
+# 📄 Resume-Ready Project Description
 
 > **Olist E-Commerce Analytics — Power BI**  
 > Built a six-page business intelligence dashboard analyzing **₹13.22M in realized revenue across 96K delivered orders and 93K unique customers**, using MySQL analytical views, Power Query, DAX, RFM segmentation, cohort retention analysis, seller diagnostics, and fulfillment-aware delivery metrics. Implemented validation-first KPI definitions and a structured analytical layer connecting sales, customer lifecycle, product, seller, delivery, and review performance.
